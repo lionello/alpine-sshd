@@ -6,7 +6,8 @@ ARG USER=tunnel
 ENV USER=${USER}
 # adduser -D creates a locked user, but we don't have usermod to unlock it, so replace pw ! with *
 RUN adduser -D -s /bin/false ${USER} && \
-    sed -i "s/^${USER}:!/${USER}:*/" /etc/shadow
+    sed -i "s/^${USER}:!/${USER}:*/" /etc/shadow && \
+    printf "Match User ${USER}\n\tAllowTcpForwarding yes\n" >> /etc/ssh/sshd_config
 
 ARG authorized_keys
 RUN mkdir -m700 /home/${USER}/.ssh && \
