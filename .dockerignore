@@ -1,1 +1,21 @@
 ssh_host_*_key
+
+**/.direnv
+**/.DS_Store
+**/.envrc
+**/.git
+**/.github
+**/.idea
+**/.vscode
+**/compose.*.yaml
+**/compose.*.yml
+**/compose.yaml
+**/compose.yml
+**/docker-compose.*.yaml
+**/docker-compose.*.yml
+**/docker-compose.yaml
+**/docker-compose.yml
+**/Thumbs.db
+Dockerfile
+# Ignore Defang project-level state
+.defang*
