@@ -25,4 +25,6 @@ RUN printf '%s' "${ssh_host_rsa_key_pub}" > /etc/ssh/ssh_host_rsa_key.pub
 
 COPY write_ssh_host_keys.sh /root/
 CMD ["/bin/sh", "-c", "/root/write_ssh_host_keys.sh && exec /usr/sbin/sshd -D -e"]
-EXPOSE 22
+ARG PORT=22
+RUN sed -i "s/^#\?Port 22/Port ${PORT}/" /etc/ssh/sshd_config
+EXPOSE ${PORT}
